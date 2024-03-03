@@ -1,5 +1,17 @@
-public function index()
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Models\Product;
+use Illuminate\Http\Request;
+
+class ProductController extends Controller
 {
-    $products = Product::all(); 
-    return response()->json($products);
+    public function index()
+    {
+        $products = Product::all(); 
+        return response()->json($products);
+    }
+    
+
 }
