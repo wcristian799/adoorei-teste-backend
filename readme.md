@@ -30,8 +30,6 @@ Nossa API foi criado os seguintes endpoints
 * Aplicado conceitos para melhor código
 
 
-Aqui está uma adaptação da documentação da API para o formato de um `README.md`, pronto para ser utilizado no seu projeto. Isso fornecerá um guia claro e acessível para qualquer pessoa que esteja interagindo com seu projeto ou utilizando sua API.
-
 ```markdown
 # Documentação da API
 
