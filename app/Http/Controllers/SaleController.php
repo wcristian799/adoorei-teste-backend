@@ -54,6 +54,38 @@ public function cancelSale($id)
 
     return response()->json(['message' => 'Venda cancelada com sucesso.'], 200);
 }
+
+public function update(Request $request, $id) {
+    $validated = $request->validate([
+        'products' => 'required|array',
+        'products.*.id' => 'required|exists:products,id',
+        'products.*.amount' => 'required|integer|min:1',
+        'products.*.price' => 'required|numeric',
+    ]);
+
+    DB::beginTransaction();
+    try {
+        $sale = Sale::findOrFail($id);
+
+        // Limpar os produtos atuais para adicionar os novos
+        $sale->products()->detach();
+
+        foreach ($validated['products'] as $product) {
+            $sale->products()->attach($product['id'], [
+                'amount' => $product['amount'],
+                'price' => $product['price'],
+            ]);
+        }
+
+        DB::commit();
+
+        return response()->json($sale->load('products'), 200);
+    } catch (\Exception $e) {
+        DB::rollBack();
+        return response()->json(['message' => 'Falha ao atualizar venda', 'error' => $e->getMessage()], 500);
+    }
+}
+
  
 public function update(Request $request, $id) {
     // Validar os dados recebidos
