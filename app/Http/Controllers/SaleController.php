@@ -34,6 +34,13 @@ class SaleController extends Controller
         }
     }
 
+    public function index()
+{
+    $sales = Sale::with('products')->get();
+    return response()->json($sales);
+}
+ 
+
     public function store(Request $request)
     {
         $validated = $request->validate([
