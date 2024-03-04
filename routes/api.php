@@ -24,3 +24,10 @@ Route::get('/products/{id}', [ProductController::class, 'show']);
 Route::get('/sales', [SaleController::class, 'index']);
 Route::get('/sales/{id}', [SaleController::class, 'show']);
 Route::post('/sales', [SaleController::class, 'store']);
+
+Route::patch('/sales/{id}/cancel', [SaleController::class, 'cancelSale']);
+Route::patch('/sales/{id}', [SaleController::class, 'update']); 
+
+Route::patch('/sales/{id}/cancel', [SaleController::class, 'cancelSale']);
+
+
