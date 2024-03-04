@@ -11,7 +11,7 @@ class SaleTest extends TestCase
 {
     use RefreshDatabase;
 
-    /** @test */ 
+    /** @test */
     public function a_sale_can_be_created()
     {
         $product = Product::factory()->create();

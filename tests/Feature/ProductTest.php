@@ -10,7 +10,7 @@ class ProductTest extends TestCase
 {
     use RefreshDatabase;
 
-    /** @test */ 
+    /** @test */
     public function products_can_be_listed()
     {
         $product = Product::factory()->create();
