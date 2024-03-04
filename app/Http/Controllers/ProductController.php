@@ -27,6 +27,18 @@ class ProductController extends Controller
 
         return response()->json($product, Response::HTTP_CREATED); // Utiliza a constante HTTP_CREATED para o código de status 201
     }
+
+    public function show($id)
+{
+    $product = Product::find($id);
+
+    if (!$product) {
+        return response()->json(['message' => 'Produto nao encontrado'], 404);
+    }
+
+    return response()->json($product);
+}
+
     
 
 }
