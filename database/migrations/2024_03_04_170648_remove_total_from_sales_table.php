@@ -11,20 +11,19 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('sales', function (Blueprint $table) {
-            $table->id();
-            $table->decimal('amount', 10, 2);
-            $table->string('status')->default('pending'); // Exemplo: pending, completed, cancelled
-            $table->timestamps();
+        Schema::table('sales', function (Blueprint $table) {
+            $table->dropColumn('total');
         });
         
-    }
+    } 
 
     /**
      * Reverse the migrations.
      */
     public function down(): void
     {
-        Schema::dropIfExists('sales');
+        Schema::table('sales', function (Blueprint $table) {
+            //
+        });
     }
 };
